@@ -15,6 +15,8 @@ exports.target_create = function (req, res) {
             gender: req.body.gender,
             age: req.body.age,
             category: req.body.category,
+            brand: req.body.brand,
+            peopleEstimate: req.body.peopleEstimate,
             userBtn_1: req.body.userBtn_1,
             userBtn_2: req.body.userBtn_2,
             userBtn_3: req.body.userBtn_3,

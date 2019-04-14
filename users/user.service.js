@@ -13,8 +13,8 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ username, password }) {
-    const user = await User.findOne({ username });
+async function authenticate({ email, password }) {
+    const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
@@ -35,8 +35,8 @@ async function getById(id) {
 
 async function create(userParam) {
     // validate
-    if (await User.findOne({ username: userParam.username })) {
-        throw '邮箱 "' + userParam.username + '" 已被注册';
+    if (await User.findOne({ email: userParam.email })) {
+        throw '邮箱 "' + userParam.email + '" 已被注册';
     }
 
     const user = new User(userParam);
@@ -55,8 +55,8 @@ async function update(id, userParam) {
 
     // validate
     if (!user) throw '用户不存在';
-    if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-        throw '邮箱 "' + userParam.username + '" 已被注册';
+    if (user.email !== userParam.email && await User.findOne({ email: userParam.email })) {
+        throw '邮箱 "' + userParam.email + '" 已被注册';
     }
 
     // hash password if it was entered
