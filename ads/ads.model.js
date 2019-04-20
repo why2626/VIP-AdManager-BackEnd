@@ -23,7 +23,6 @@ let AdSchema = new Schema({
     dayLimitPrice: {type: Number},
     turnedOn: {type: Boolean},
     status: {type: String},
-    spentMoney: {type: Number},
     exposure: {type: Number},
     clickCount: {type: Number},
     createTime: { type: Date, default: Date.now},

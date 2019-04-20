@@ -38,7 +38,9 @@ async function create(userParam) {
     if (await User.findOne({ email: userParam.email })) {
         throw '邮箱 "' + userParam.email + '" 已被注册';
     }
-
+    if(!userParam.balance){
+        userParam.balance = 2405900
+    }
     const user = new User(userParam);
 
     // hash password

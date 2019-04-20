@@ -1,5 +1,10 @@
 const Ad = require('./ads.model');
 
+//获得随机数 用于虚拟数据源
+function RandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) === min  ? (min + 1) : Math.floor(Math.random() * (max - min)) + min
+}
+
 //Simple version, without validation or sanitation
 exports.all_ads = function (req, res) {
     Ad.find({userId: req.user.sub},function (err, Ads) {
@@ -26,10 +31,9 @@ exports.ad_create = function (req, res) {
             dayLimitPrice: req.body.dayLimitPrice,
             turnedOn: true,
             status: '投放中',
-            spentMoney: 4253,
-            exposure: 58544,
-            clickCount: 356,
-            createTime: req.body.createTime,
+            clickCount: RandomNum(700,3000), //点击量-虚拟数据
+            exposure: RandomNum(8000,70000), //曝光量-虚拟数据
+            createTime: req.body.createTime, 
             userId: req.user.sub,
             
         }

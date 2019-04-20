@@ -7,7 +7,7 @@ const schema = new Schema({
     companyName: { type: String, required: true },
     username: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
-    //_id: { type: String }
+    balance: { type: Number, required: true }
 });
 
 schema.set('toJSON', { virtuals: true });
