@@ -18,7 +18,7 @@ exports.ad_create = function (req, res) {
             isEndDateSet: req.body.isEndDateSet,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            vipAPP: req.body.vipAPP,
+            appPoint: req.body.appPoint,
             adPosition: req.body.adPosition,
             uploadedImage: req.body.uploadedImage,
             linkType: req.body.linkType,
@@ -35,12 +35,13 @@ exports.ad_create = function (req, res) {
             exposure: RandomNum(8000,70000), //曝光量-虚拟数据
             createTime: req.body.createTime, 
             userId: req.user.sub,
-            
         }
     );
     ad.save(function (err) {
         if (err) {
             return next(err);
+            // res.send(err)
+            // return
         }
         res.send('Ad Created successfully')
     })

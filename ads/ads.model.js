@@ -10,7 +10,7 @@ let AdSchema = new Schema({
     isEndDateSet: {type: Boolean},
     startDate: {type: Date},
     endDate: {type: Date},
-    vipAPP: {type: String},
+    appPoint: {type: String},
     adPosition : [AdPositionSchema],
     uploadedImage: {type: String},  
     linkType: {type: String},
